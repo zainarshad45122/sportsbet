@@ -1,18 +1,18 @@
 import React from "react";
-import MyPullConnector from "./PullConnector";
-
+import MyPushConnector from "./PushConnector";
 
 const notifyInitialDump = () => {
-  const pullConnector = new MyPullConnector("sept.oddsmatrix.com", 7000);
-  pullConnector.start('LawleyandAllen');
- 
- // pullConnector.notifyInitialDump() ;
+  console.log('notify');
+  const pushConnector = new MyPushConnector("sept.oddsmatrix.com", 7000);
+  pushConnector.start('LawleyandAllen');
 }
+
+
 
 const Home = () => {
  
   return <button onClick={() => notifyInitialDump()}>
-  Pull Data
+  Push Data Socket Connection
 </button>;
 };
 
