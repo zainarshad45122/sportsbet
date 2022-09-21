@@ -1,25 +1,52 @@
-const { SEPCPushConnector, SEPCPullConnector, pushListenTo, TCPEvents } = require('@everymatrix/om-connector');
+
+import { SEPCPushConnector } from '@everymatrix/om-connector';
 
 
-// This will be handled outside of the connector
+class LbPushConnector extends SEPCPushConnector
+
+{
+
+// variable where the last update batch uuid will be saved; use your own logic to save the latest processed update
+
+lastChangeBatchUuid = null;
 
 
+// override method responsible for notifying
 
-class MyPullConnector extends SEPCPullConnector {
-    notifyInitialDump(initialData) {
-        console.log(initialData)
-    }
-    notifyEntityUpdates(updateData) {
-       
-    }
+// about new initial data messages
 
-  
+async notifyInitialDump(initialData)
+
+{
+
+console.log(initialData);
+
 }
 
-// After some processing
-//pushConnector.stop();
 
-// Start with resume process here
-//pushConnector.startWithResume(subscriptionName, subscriptionId, subscriptionChecksum, lastAppliedEntityChangeBatchUuid);
+// override method responsible for notifying
 
-export default MyPullConnector;
+// about new update messages
+
+async notifyEntityUpdates(updateData)
+
+{
+
+console.log(updateData);
+
+}
+
+
+// return the last saved uuid as you see fit, in order to avoid re-subscription
+
+getLastAppliedEntityChangeBatchUuid()
+
+{
+
+return this.lastChangeBatchUuid;
+
+}
+
+}
+
+export default LbPushConnector;
