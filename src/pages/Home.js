@@ -1,9 +1,9 @@
 import React from "react";
-import MyPushConnector from "./PushConnector";
+import LbPushConnector from "./PushConnector";
 
 const notifyInitialDump = () => {
   console.log('notify');
-  const pushConnector = new MyPushConnector("sept.oddsmatrix.com", 7000);
+  const pushConnector = new LbPushConnector('sept.oddsmatrix.com', 7000);
   pushConnector.start('LawleyandAllen');
 }
 
